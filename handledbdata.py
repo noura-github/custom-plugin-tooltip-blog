@@ -1,7 +1,6 @@
 import sqlite3
 
 
-
 def get_employee_data():
     # Connect to SQLite database
     conn = sqlite3.connect('custom_plugin.db')
@@ -58,5 +57,3 @@ def find_image_file(file_id):
     conn.close()
 
     return file_data
-
-

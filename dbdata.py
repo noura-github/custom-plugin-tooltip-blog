@@ -1,5 +1,6 @@
 import sqlite3
 
+
 # Function to create the database and tables
 def create_database():
     # Connect to SQLite database (or create it if it doesn't exist)
@@ -38,19 +39,25 @@ def create_database():
     conn.commit()
     conn.close()
 
+
 # Function to populate the employee table
 def populate_employee_table():
     employee_data = {
         "employees": [
-            {"id": 1, "firstname": "Alice", "lastname": "Smith", "email": "alice@techcorp.com", "phone": "555-0246", "departmentId": 1,
+            {"id": 1, "firstname": "Alice", "lastname": "Smith", "email": "alice@techcorp.com", "phone": "555-0246",
+             "departmentId": 1,
              "departmentName": "Engineering", "companyName": "TechCorp"},
-            {"id": 2, "firstname": "Bob", "lastname": "Brown", "email": "bob@techcorp.com", "phone": "555-1234", "departmentId": 1,
+            {"id": 2, "firstname": "Bob", "lastname": "Brown", "email": "bob@techcorp.com", "phone": "555-1234",
+             "departmentId": 1,
              "departmentName": "Engineering", "companyName": "TechCorp"},
-            {"id": 3, "firstname": "Charlie", "lastname": "Davis", "email": "charlie@techcorp.com", "phone": "555-3781", "departmentId": 2,
+            {"id": 3, "firstname": "Charlie", "lastname": "Davis", "email": "charlie@techcorp.com", "phone": "555-3781",
+             "departmentId": 2,
              "departmentName": "Marketing", "companyName": "TechCorp"},
-            {"id": 4, "firstname": "David", "lastname": "Wilson", "email": "david@techmicro.com", "phone": "555-0998", "departmentId": 3,
+            {"id": 4, "firstname": "David", "lastname": "Wilson", "email": "david@techmicro.com", "phone": "555-0998",
+             "departmentId": 3,
              "departmentName": "Sales", "companyName": "TechMicro"},
-            {"id": 5, "firstname": "Mary", "lastname": "Johnson", "email": "mary@techmicro.com", "phone": "555-1165", "departmentId": 4,
+            {"id": 5, "firstname": "Mary", "lastname": "Johnson", "email": "mary@techmicro.com", "phone": "555-1165",
+             "departmentId": 4,
              "departmentName": "HR", "companyName": "TechMicro"}
         ]
     }
@@ -64,13 +71,15 @@ def populate_employee_table():
         cursor.execute('''
         INSERT INTO employee (id, firstname, lastname, email, phone, departmentId, departmentName, companyName)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (emp["id"], emp["firstname"], emp["lastname"], emp["email"], emp["phone"], emp["departmentId"], emp["departmentName"], emp["companyName"]))
+        ''', (emp["id"], emp["firstname"], emp["lastname"], emp["email"], emp["phone"], emp["departmentId"],
+              emp["departmentName"], emp["companyName"]))
 
     print("Employee data inserted successfully.")
 
     # Commit changes and close the connection
     conn.commit()
     conn.close()
+
 
 # Function to insert a file into the database
 def insert_file(filename, description, filepath):
@@ -94,6 +103,7 @@ def insert_file(filename, description, filepath):
     conn.commit()
     conn.close()
 
+
 # Function to populate the files table
 def populate_files():
     # Example: Insert a file into the table
@@ -101,6 +111,7 @@ def populate_files():
     insert_file('Fields.jpg', 'A road in the fields of flowers leading to the mountains.', 'static/images/Fields.jpg')
     insert_file('Waterfall.jpg', 'A Cascading Waterfall under pink trees.', 'static/images/Waterfall.jpg')
     insert_file('Lake.jpg', 'A a blue water lake.', 'static/images/Lake.jpg')
+
 
 # Function to link an employee to a file
 def link_employee_to_file(employee_id, file_id):
@@ -118,5 +129,3 @@ def link_employee_to_file(employee_id, file_id):
     # Commit changes and close the connection
     conn.commit()
     conn.close()
-
-

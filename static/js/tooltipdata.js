@@ -1,5 +1,5 @@
 
-
+/* Developed by Noura Bensaber */
 
 (function($) {
 

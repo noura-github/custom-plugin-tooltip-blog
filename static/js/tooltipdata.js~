@@ -1,5 +1,5 @@
 
-
+// Noura Bensaber
 
 (function($) {
 
@@ -20,7 +20,11 @@
         this.info_menu = data.info_menu;
         this.imageurl = data.imageurl;
 
-        this.position = data.position;
+        this.position = data.position || {
+                                            my: "center bottom", // Position the tooltip relative to the element
+                                            at: "center top",    // Position tooltip above the element
+                                            collision: "flip"    // Adjust positioning to prevent clipping
+                                         };
         this.show = data.show || {effect: "slideDown", duration: 200};
         this.hide = data.hide || {effect: "slideUp", duration: 200};
         this.track = data.track || false;
