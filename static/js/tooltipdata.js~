@@ -1,5 +1,5 @@
 
-// Noura Bensaber
+/* Developed by Noura Bensaber */
 
 (function($) {
 
@@ -53,6 +53,9 @@
         this.content.append(this.imageContainer);
         this.content.append(this.footerContainer);
 
+        // Cache object to store images
+        this.imageCache = __tooltipdata.imageCache || (__tooltipdata.imageCache = {});
+
         // This code snippet prevents the tooltip from hiding
         //when the mouse is moved out of the element
         $(elem).on('mouseout focusout', function(event) {
@@ -77,25 +80,32 @@
 
         this.onOpen = function() {
             if (that.image) return;
-            $.ajax({
-                type: 'POST',
-                url: that.imageurl,
-                dataType: 'binary',
-                processData: false,
-                contentType: 'application/json',
-                xhrFields: { responseType: 'blob' },
-                data: JSON.stringify({ 'id': that.id }),
-                success: function(blob) {
-                    // Create a URL for the blob
-                    var imageUrl = URL.createObjectURL(blob);
-                    that.image = imageUrl;
-                    // Set the src attribute of the img element
-                    that.tooltipImg.attr("src", imageUrl);
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error: ", error, "Status: ", status);
-                }
-            });
+
+            if (that.imageCache[that.id]) {
+                that.image = that.imageCache[that.id];
+                that.tooltipImg.attr("src", that.image);
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: that.imageurl,
+                    dataType: 'binary',
+                    processData: false,
+                    contentType: 'application/json',
+                    xhrFields: { responseType: 'blob' },
+                    data: JSON.stringify({ 'id': that.id }),
+                    success: function(blob) {
+                        // Create a URL for the blob
+                        var imageUrl = URL.createObjectURL(blob);
+                        that.image = imageUrl;
+                        // Set the src attribute of the img element
+                        that.tooltipImg.attr("src", imageUrl);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error: ", error, "Status: ", status);
+                    }
+                });
+            }
+
         }
 
         elem.tooltip({
