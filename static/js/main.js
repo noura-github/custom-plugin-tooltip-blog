@@ -11,6 +11,9 @@ function getEmployeeData() {
         success: function(data) {
             displayEmployeeData(data);
             initializeTooltipData();
+        },
+        error: function(xhr, status, error) {
+            console.error("Error: ", error, "Status: ", status);
         }
     });
 }
