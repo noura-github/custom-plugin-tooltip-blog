@@ -124,12 +124,12 @@
     }
 
     $.fn.tooltipData = function(data) {
-    return this.each(function() {
-        // Check if the element already has tooltip data initialized
-        if (!$.data(this, "tooltipdata")) {
-            // Initialize the tooltip data and store it in the element's data
-            $.data(this, "tooltipdata", new __tooltipdata($(this), data));
-        }
-    });
-};
+        return this.each(function() {
+            // Check if the element already has tooltip data initialized
+            if (!$.data(this, "tooltipdata")) {
+                // Initialize the tooltip data and store it in the element's data
+                $.data(this, "tooltipdata", new __tooltipdata($(this), data));
+            }
+        });
+    };
 }(jQuery));

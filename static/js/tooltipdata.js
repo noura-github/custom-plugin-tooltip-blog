@@ -3,32 +3,32 @@
 
 (function($) {
 
-    function __tooltipdata(elem, data) {
+    function __tooltipdata(elem, options) {
         var that = this;
-        this.id = data.id;
-        this.title = data.title;
-        this.customClass = data.customClass;
-        this.containerClass = data.containerClass;
-        this.tooltipImgClass = data.tooltipImgClass;
-        this.headerClass = data.headerClass;
-        this.menuClass = data.menuClass;
-        this.contentClass = data.contentClass;
-        this.footerClass = data.footerClass;
-        this.image = data.image || "";
-        this.info_head = data.info_head;
-        this.info_foot = data.info_foot;
-        this.info_menu = data.info_menu;
-        this.imageurl = data.imageurl;
+        this.id = options.id;
+        this.title = options.title;
+        this.customClass = options.customClass;
+        this.containerClass = options.containerClass;
+        this.tooltipImgClass = options.tooltipImgClass;
+        this.headerClass = options.headerClass;
+        this.menuClass = options.menuClass;
+        this.contentClass = options.contentClass;
+        this.footerClass = options.footerClass;
+        this.image = options.image || "";
+        this.info_head = options.info_head;
+        this.info_foot = options.info_foot;
+        this.info_menu = options.info_menu;
+        this.imageurl = options.imageurl;
 
-        this.position = data.position || {
+        this.position = options.position || {
                                             my: "center bottom", // Position the tooltip relative to the element
                                             at: "center top",    // Position tooltip above the element
                                             collision: "flip"    // Adjust positioning to prevent clipping
                                          };
-        this.show = data.show || {effect: "slideDown", duration: 200};
-        this.hide = data.hide || {effect: "slideUp", duration: 200};
-        this.track = data.track || false;
-        this.classes = data.classes || {"ui-tooltip": "highlight"};
+        this.show = options.show || {effect: "slideDown", duration: 200};
+        this.hide = options.hide || {effect: "slideUp", duration: 200};
+        this.track = options.track || false;
+        this.classes = options.classes || {"ui-tooltip": "highlight"};
         this.isOpened = false;
 
         this.content = $("<div class='" + this.containerClass + "'></div>");
@@ -36,16 +36,16 @@
         this.menuContainer = $("<div class='" + this.menuClass + "'></div>");
         this.imageContainer = $("<div class='" + this.contentClass + "'></div>");
         this.footerContainer = $("<div class='" + this.footerClass + "'></div>");
-        this.tooltipImg = $("<img class='" + this.tooltipImgClass + "' src='" + data.image + "'>");
+        this.tooltipImg = $("<img class='" + this.tooltipImgClass + "' src='" + options.image + "'>");
         this.imageContainer.append(this.tooltipImg);
 
-        this.infoHeadSpan = $("<div>" + data.info_head + "</div>");
+        this.infoHeadSpan = $("<div>" + options.info_head + "</div>");
         this.headerContainer.append(this.infoHeadSpan);
 
-        this.infoMenuSpan = $("<div>" + data.info_menu + "</div>");
+        this.infoMenuSpan = $("<div>" + options.info_menu + "</div>");
         this.menuContainer.append(this.infoMenuSpan);
 
-        this.infoFootSpan = $("<div>" + data.info_foot + "</div>");
+        this.infoFootSpan = $("<div>" + options.info_foot + "</div>");
         this.footerContainer.append(this.infoFootSpan);
 
         this.content.append(this.headerContainer);
