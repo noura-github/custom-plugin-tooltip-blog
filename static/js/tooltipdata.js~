@@ -97,6 +97,8 @@
                         // Create a URL for the blob
                         var imageUrl = URL.createObjectURL(blob);
                         that.image = imageUrl;
+                        // Cache the image
+                        that.imageCache[that.id] = imageUrl;
                         // Set the src attribute of the img element
                         that.tooltipImg.attr("src", imageUrl);
                     },
