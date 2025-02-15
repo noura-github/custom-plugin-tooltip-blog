@@ -85,12 +85,12 @@ function initializeTooltipData() {
                 imageurl: "/imagedata",
                 position: { my: "left+10 center", at: "right center" },
                 show: {
-                    effect: "fadeIn",      // Use fade-in effect
-                    duration: 400        // Duration of fade-in animation
+                    effect: "fadeIn",   // Use fade-in effect
+                    duration: 400       // Duration of fade-in animation
                 },
                 hide: {
-                    effect: "fadeOut",   // Use fade-out effect
-                    duration: 400        // Duration of fade-out animation
+                    effect: "fadeOut",  // Use fade-out effect
+                    duration: 400       // Duration of fade-out animation
                 },
                 track: true,            // Tooltip follows the mouse
                 classes: {
