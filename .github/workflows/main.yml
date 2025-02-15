@@ -49,7 +49,7 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --name custom_plugin_tooltip app.py
+        pyinstaller --onefile --name custom_plugin_tooltip main.py
 
     - name: Upload Executable
       uses: actions/upload-artifact@v4  # Updated to v4
