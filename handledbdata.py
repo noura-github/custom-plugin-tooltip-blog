@@ -3,14 +3,16 @@ import sqlite3
 
 def get_employee_data():
     # Connect to SQLite database
-    conn = sqlite3.connect('custom_plugin.db')
+    conn = sqlite3.connect("custom_plugin.db")
     cursor = conn.cursor()
 
     # Query the table for employee data
-    cursor.execute('''
+    cursor.execute(
+        """
         SELECT employee.id, firstname, lastname, email, phone, departmentId, departmentName, companyName, file_id, filename, description FROM employee
         INNER JOIN files ON employee.file_id = files.id
-    ''')
+    """
+    )
 
     # Fetch the employee data
     rows = cursor.fetchall()
@@ -28,7 +30,7 @@ def get_employee_data():
             "companyName": row[7],
             "file_id": row[8],
             "filename": row[9],
-            "description": row[10]
+            "description": row[10],
         }
         for row in rows
     ]
@@ -42,13 +44,16 @@ def get_employee_data():
 # Function to find an image file by filename
 def find_image_file(file_id):
     # Connect to SQLite database
-    conn = sqlite3.connect('custom_plugin.db')
+    conn = sqlite3.connect("custom_plugin.db")
     cursor = conn.cursor()
 
     # Query the table for the file
-    cursor.execute('''
+    cursor.execute(
+        """
         SELECT file FROM files WHERE id = ?
-    ''', (file_id,))
+    """,
+        (file_id,),
+    )
 
     # Fetch the file data
     file_data = cursor.fetchone()
