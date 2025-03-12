@@ -4,7 +4,7 @@ from dbdata import (
     create_database,
     populate_employee_table,
     populate_files,
-    link_employee_to_file, check_database_exists,
+    link_employee_to_file,
 )
 from handledbdata import find_image_file, get_employee_data
 

@@ -1,11 +1,9 @@
 import sqlite3
 
 
-db_name = "custom_plugin.db"
-
 def get_employee_data():
     # Connect to SQLite database
-    conn = sqlite3.connect(db_name)
+    conn = sqlite3.connect("custom_plugin.db")
     cursor = conn.cursor()
 
     # Query the table for employee data
@@ -46,7 +44,7 @@ def get_employee_data():
 # Function to find an image file by filename
 def find_image_file(file_id):
     # Connect to SQLite database
-    conn = sqlite3.connect(db_name)
+    conn = sqlite3.connect("custom_plugin.db")
     cursor = conn.cursor()
 
     # Query the table for the file

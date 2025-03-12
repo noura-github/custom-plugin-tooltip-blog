@@ -1,10 +1,22 @@
+import os
 import sqlite3
 
+
+db_name = "custom_plugin.db"
+
+def check_database_exists():
+    # Check if the database file already exists
+    if os.path.exists(db_name):
+        print("Database already exists.")
+        return True
+    else:
+        print("Database does not exist. It will be created upon connection.")
+        return False
 
 # Function to create the database and tables
 def create_database():
     # Connect to SQLite database (or create it if it doesn't exist)
-    conn = sqlite3.connect("custom_plugin.db")
+    conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
     # Create the files table
@@ -102,7 +114,7 @@ def populate_employee_table():
     }
 
     # Connect to SQLite database
-    conn = sqlite3.connect("custom_plugin.db")
+    conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
     # Insert employee data into the table
@@ -134,7 +146,7 @@ def populate_employee_table():
 # Function to insert a file into the database
 def insert_file(filename, description, filepath):
     # Connect to SQLite database
-    conn = sqlite3.connect("custom_plugin.db")
+    conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
     # Read the file as binary data
@@ -177,7 +189,7 @@ def populate_files():
 # Function to link an employee to a file
 def link_employee_to_file(employee_id, file_id):
     # Connect to SQLite database
-    conn = sqlite3.connect("custom_plugin.db")
+    conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
 
     # Update the employee table with the file_id
