@@ -9,7 +9,7 @@ OUTPUT = dist\main
 
 # Create a virtual environment
 venv:
-	python -m venv $(VENV)
+	$(PYTHON) -m venv $(VENV)
 
 # Install dependencies
 install: venv
@@ -20,9 +20,9 @@ install: venv
 run: install
 	$(PYTHON) $(ENTRY)
 
-# Run tests
+# Run tests using pytest
 test:
-	$(PYTHON) -m unittest discover -s tests
+	$(PYTHON) -m pytest tests
 
 # Lint code using flake8
 lint:
